@@ -1,4 +1,5 @@
 $font: #000;
+$button: #f5f5f5;
 
 .navbar {
   display: flex;
@@ -17,6 +18,10 @@ $font: #000;
       font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
       font-size: 20px;
       font-weight: 100;
+    }
+
+    .icon {
+      font-size: 35px;
     }
 
     #sidebar__toggle {
@@ -38,19 +43,72 @@ $font: #000;
       background-color: lightgrey;
     }
 
-    .icon {
-      font-size: 40px;
-    }
     .youtube {
       color: red;
     }
   }
 
   .center {
+    display: flex;
     flex-grow: 1;
+    align-items: center;
+    justify-content: center;
+
+    .searchbar {
+      border: 1px solid lightgrey;
+      font-size: 15px;
+      padding-left: 10px;
+      height: 35px;
+      width: 90%;
+    }
+
+    button {
+      background-color: $button;
+      border: 1px solid lightgrey;
+      border-left: none;
+      height: 35px;
+      width: 10%;
+    }
+
+    .search {
+      color: grey;
+    }
   }
 
   .right {
+    align-items: center;
+    display: flex;
     flex-grow: 1;
+    justify-content: flex-end;
+    padding-right: 30px;
+
+    .addvideo-button {
+      background: transparent;
+      border: none;
+      color: grey;
+      font-size: 30px;
+      margin: 10px;
+    }
+
+    button {
+      outline: none;
+    }
+
+    button:hover {
+      cursor: pointer;
+    }
+
+    button:hover,
+    button:active {
+      outline: none;
+    }
+
+    .profile {
+      border: none;
+      border-radius: 50%;
+      height: 40px;
+      margin: 10px;
+      width: 40px;
+    }
   }
 }
