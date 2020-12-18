@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import RecorderIcon from '@material-ui/icons/Reorder';
 import SearchIcon from '@material-ui/icons/Search';
@@ -7,6 +8,8 @@ import AddIcon from '@material-ui/icons/AddBox';
 import './navbar.scss';
 
 const Navbar: React.FC = () => {
+  const [loggedIn, setLoggedIn] = useState<boolean>(false);
+
   return (
     <div className="navbar">
       <div className="left">
@@ -18,15 +21,21 @@ const Navbar: React.FC = () => {
       </div>
       <div className="center">
         <input className="searchbar" placeholder="Search" />
-        <button className="searchbar-button">
+        <button className="btn searchbar-button">
           <SearchIcon className="icon search" />
         </button>
       </div>
       <div className="right">
-        <button className="addvideo-button">
+        <button className="btn addvideo">
           <AddIcon className="icon add" />
         </button>
-        <button className="profile"></button>
+        {loggedIn ? (
+          <button className="btn profile"></button>
+        ) : (
+          <button className="btn signin">
+            <Link to="/signin">Sign in</Link>
+          </button>
+        )}
       </div>
     </div>
   );
