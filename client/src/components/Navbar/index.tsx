@@ -32,9 +32,9 @@ const Navbar: React.FC = () => {
         {loggedIn ? (
           <button className="btn profile"></button>
         ) : (
-          <button className="btn signin">
-            <Link to="/signin">Sign in</Link>
-          </button>
+          <Link to="/signin">
+            <button className="btn signin">Sign in</button>
+          </Link>
         )}
       </div>
     </div>
