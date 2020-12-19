@@ -13,7 +13,6 @@ export const ErrorMiddleware = async (
   res: Response,
   next: NextFunction,
 ) => {
-  console.log('in errormiddleware');
   res.status(err.code);
   return res.send({
     name: err.name,

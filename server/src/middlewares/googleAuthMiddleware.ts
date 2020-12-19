@@ -24,9 +24,9 @@ export const googleAuthMiddleware = async (
   try {
     const ticket = await client.verifyIdToken({
       idToken: accessToken,
-      audience:
-        '145118799853-0vttp06fqdoca0vh2a235h0ntr0tmeuk.apps.googleusercontent.com',
+      audience: '407408718192.apps.googleusercontent.com',
     });
+
     const payload = ticket.getPayload();
     res.locals.payload = {
       email: payload?.email,
@@ -35,6 +35,7 @@ export const googleAuthMiddleware = async (
     };
     next();
   } catch (error) {
+    console.log(error);
     if (['SyntaxError', 'Error', 'TypeError'].includes(error.name)) {
       return next(new UnAuthorizedException());
     }

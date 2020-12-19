@@ -1,8 +1,8 @@
 import { UnexpectedException } from '../utility/ErrorService';
 import User from './usersModel';
 
-export const existingUser = (email: string) => {
-  return User.findOne({ where: { email } });
+export const existingUser = (googleID: string) => {
+  return User.findOne({ where: { googleID } });
 };
 
 export const createUser = async (
@@ -11,7 +11,7 @@ export const createUser = async (
   googleID: string,
 ) => {
   try {
-    const user = await existingUser(email);
+    const user = await existingUser(googleID);
     if (!user) {
       await User.create({
         name: name,

@@ -1,4 +1,4 @@
-import { DataTypes, Model, Optional } from 'sequelize';
+import { Model } from 'sequelize';
 
 export interface UserAttribute {
   id?: string;
