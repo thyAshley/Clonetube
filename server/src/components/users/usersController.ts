@@ -1,6 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
+import { validationResult } from 'express-validator';
+import { ValidationException } from '../utility/ErrorService';
 
-import User from './usersModel';
 import * as statusCode from '../utility/statusCode';
 import * as userServices from './usersService';
 
@@ -9,12 +10,16 @@ export const signin = async (
   res: Response,
   next: NextFunction,
 ) => {
-  const { name, email, googleID } = req.body;
-
+  const errors = validationResult(req);
+  if (!errors.isEmpty()) {
+    return next(new ValidationException('faield'));
+  }
+  const { name, email, googleId } = res.locals.payload;
+  console.log(name, email, googleId);
   try {
-    await userServices.createUser;
-    res.status(statusCode.OK).send('User inserted into database');
+    await userServices.createUser(name, email, googleId);
+    res.status(statusCode.OK).send('Success');
   } catch (error) {
-    console.log(error);
+    next(error);
   }
 };
